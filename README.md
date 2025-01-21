@@ -13,4 +13,14 @@ note: It is built with X86 architecture because bgpstream project owners don't h
 
 ## Sample Python command once in the project
 `python3 bgpstream.py -tf='2024-12-01' -tt='2024-12-02'`
-- Careful, even this one day sample will general a lot of data.
+- Careful, even this one day sample will general Gb.
+
+## Output column description
+- Record Type: 
+- Element Type,timestamp: 
+- RRCnum: 
+- Advertising AS: 
+- Next Hop: 
+- Prefix: 
+- AS Path: 
+- communities(asn:communityValue): 
