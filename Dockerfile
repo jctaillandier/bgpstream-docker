@@ -1,7 +1,7 @@
 FROM --platform=linux/amd64 ubuntu:focal
 
 # Your subsequent instructions
-RUN apt update -y && apt upgrade -y && apt install vim -y
+RUN apt update -y && apt upgrade -y && apt install -y vim tmux
 
 COPY . ./bgp_project
 

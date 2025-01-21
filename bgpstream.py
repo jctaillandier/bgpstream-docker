@@ -1,4 +1,5 @@
 import pybgpstream, argparse
+from datetime import datetime
 
 parser = argparse.ArgumentParser(description='BGP Stream script')
 parser.add_argument('-tf','--time_from', required=True)
@@ -34,7 +35,7 @@ stream = pybgpstream.BGPStream(
     collectors=["rrc00"],
 )
 
-with open(f"./data/{_FROM.split(' ')[0]}_{_TO.split(' ')[0]}.csv", "w") as f:
+with open(f"./data/{_FROM.split(' ')[0]}_{_TO.split(' ')[0]}_{datetime.now().strftime('%H:%M:%S')}.csv", "w") as f:
     print(f"Writing to file: ./data/{_FROM.split(' ')[0]}_{_TO.split(' ')[0]}.csv")
     f.write(f','.join(HEADERS) + '\n')
     for index,rec in enumerate(stream):
