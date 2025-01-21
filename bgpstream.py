@@ -62,9 +62,9 @@ with open(
             if args.filters in str(rec):
                 f.write(str(rec) + "\n")
         if args.country:
-            for asn in country_asn:
-                if asn in str(rec).split('|')[7]: # Advertising AS
-                    f.write(str(rec) + "\n")
+            if str(rec).split('|')[7] in country_asn: # Advertising AS
+                f.write(str(rec) + "\n")
+                
         if not args.filters and not args.country:
             f.write(str(rec) + "\n")
         if index % 100000 == 0:
