@@ -36,12 +36,12 @@ stream = pybgpstream.BGPStream(
 
 with open(f"./data/{_FROM.split(' ')[0]}_{_TO.split(' ')[0]}.csv", "w") as f:
     print(f"Writing to file: ./data/{_FROM.split(' ')[0]}_{_TO.split(' ')[0]}.csv")
-    f.write(f"{HEADERS}\n")
+    f.write(f','.join(HEADERS) + '\n')
     for index,rec in enumerate(stream):
         if args.filters:
-            if args.filters in rec.fields:
-                f.write(f"{rec}\n")
+            if args.filters in str(rec):
+                f.write(','.join(rec))
         else:    
-            f.write(f"{rec}\n")
-        if index % 1000 == 0:
+            f.write(','.join(rec))
+        if index % 100000 == 0:
             print(f"Processed {index} records")

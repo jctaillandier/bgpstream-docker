@@ -3,7 +3,7 @@
 - Docker version of project doesn't work anymore 
 
 ## Build it
-docker build -t docker-bgp .
+`docker build -t docker-bgp .`
 
 note: It is built with X86 architecture because bgpstream project owners don't have release with arm.
 
