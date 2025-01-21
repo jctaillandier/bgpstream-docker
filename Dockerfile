@@ -1,17 +1,14 @@
-# Start from the official Ubuntu image
-FROM ubuntu:latest
+FROM --platform=linux/amd64 ubuntu:focal
 
-# Set environment variables to non-interactive to avoid prompts during install
-ENV DEBIAN_FRONTEND=noninteractive
+# Your subsequent instructions
+RUN apt update -y && apt upgrade -y && apt install vim -y
 
-# Update the package list and install dependencies
-RUN apt-get update && apt-get install -y \
-    python3 \
-    python3-pip \
-    git \
-    && rm -rf /var/lib/apt/lists/*
+COPY . ./bgp_project
 
-# Install the pybgpstream Python library
-RUN pip3 install pybgpstream
+WORKDIR ./bgp_project
 
-RUN git clone 
+RUN chmod +x ./installs.sh 
+
+RUN ./installs.sh
+
+RUN python3 -m pip install -r ./requirements.txt
